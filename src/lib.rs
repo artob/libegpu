@@ -7,12 +7,14 @@ pub mod core {
     pub use enclosure::*;
 }
 
+#[cfg(feature = "pci")]
 pub mod pci {
     mod scan;
     pub use scan::*;
     pub mod registry;
 }
 
+#[cfg(feature = "usb")]
 pub mod usb {
     mod scan;
     pub use scan::*;

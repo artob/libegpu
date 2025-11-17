@@ -1,6 +1,9 @@
 // This is free and unencumbered software released into the public domain.
 
-use nusb::DeviceInfo;
-
+#[cfg(not(feature = "usb"))]
 #[derive(Clone, Debug)]
-pub struct Enclosure(pub DeviceInfo);
+pub struct Enclosure;
+
+#[cfg(feature = "usb")]
+#[derive(Clone, Debug)]
+pub struct Enclosure(pub nusb::DeviceInfo);
