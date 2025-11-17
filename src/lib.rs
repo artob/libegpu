@@ -5,6 +5,8 @@ pub mod core {
     pub use device::*;
     mod enclosure;
     pub use enclosure::*;
+    mod vendor;
+    pub use vendor::*;
 }
 
 #[cfg(feature = "pci")]

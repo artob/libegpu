@@ -19,7 +19,7 @@ publish = true
 [features]
 default = ["all", "std"]
 all = ["pci", "usb"]
-std = []
+std = ["derive_more/std"]
 
 # Optional features:
 pci = ["dep:pci-info"]
@@ -30,6 +30,7 @@ usb = ["dep:nusb"]
 [dependencies]
 nusb = { version = "0.2", optional = true }
 pci-info = { version = "0.3", optional = true }
+derive_more = { version = "2", default-features = false, features = ["display"] }
 
 [patch.crates-io]
 
