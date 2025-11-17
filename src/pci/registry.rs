@@ -3,7 +3,7 @@
 pub static KNOWN_VENDORS: [u16; 3] = [
     0x10DE, // NVIDIA
     0x1002, // AMD/ATI
-    0x1022, // AMD
+    0x8086, // Intel
 ];
 
 pub static KNOWN_DEVICES: [PciDevice; 0] = [];
