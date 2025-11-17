@@ -1,0 +1,36 @@
+# See: https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[package]
+name = "egpu"
+version = "0.0.0"
+authors = ["Arto Bendiken"]
+edition = "2024"
+#rust-version = "1.85"
+description = "Libegpu is a work in progress"
+#documentation = ""
+readme = true
+homepage = "https://libegpu.dev"
+repository = "https://github.com/artob/libegpu"
+license = "Unlicense"
+keywords = ["egpu", "gpu", "pcie", "usb"]
+categories = []
+publish = true
+
+[features]
+default = ["all", "std"]
+all = []
+std = []
+
+[build-dependencies]
+
+[dependencies]
+
+[patch.crates-io]
+
+[[bin]]
+name = "egpu"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+strip = "symbols"
