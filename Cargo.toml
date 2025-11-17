@@ -13,7 +13,7 @@ homepage = "https://libegpu.dev"
 repository = "https://github.com/artob/libegpu"
 license = "Unlicense"
 keywords = ["egpu", "gpu", "pcie", "usb"]
-categories = []
+categories = ["hardware-support"]
 publish = true
 
 [features]
@@ -24,6 +24,8 @@ std = []
 [build-dependencies]
 
 [dependencies]
+nusb = "0.2"
+pci-info = "0.3"
 
 [patch.crates-io]
 

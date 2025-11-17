@@ -1,0 +1,30 @@
+// This is free and unencumbered software released into the public domain.
+
+use crate::usb::registry::{KNOWN_ENCLOSURES, KNOWN_VENDORS};
+use nusb::{DeviceInfo, Error, MaybeFuture};
+
+struct ListEnclosures(Box<dyn Iterator<Item = DeviceInfo>>);
+
+pub fn list_enclosures() -> Result<impl Iterator<Item = DeviceInfo>, Error> {
+    Ok(ListEnclosures(Box::new(nusb::list_devices().wait()?)))
+}
+
+impl Iterator for ListEnclosures {
+    type Item = DeviceInfo;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        while let Some(device) = self.0.next() {
+            if KNOWN_VENDORS
+                .iter()
+                .find(|&vid| *vid == device.vendor_id())
+                .is_some()
+                && let Some(_dev) = KNOWN_ENCLOSURES
+                    .iter()
+                    .find(|&dev| dev.vid == device.vendor_id() && dev.pid == device.product_id())
+            {
+                return Some(device);
+            }
+        }
+        None
+    }
+}
