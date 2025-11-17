@@ -6,6 +6,7 @@ use super::Vendor;
 #[derive(Clone, Debug)]
 pub struct Enclosure;
 
+/// USB-attached eGPU enclosure.
 #[cfg(feature = "usb")]
 #[derive(Clone, Debug)]
 pub struct Enclosure(pub nusb::DeviceInfo);

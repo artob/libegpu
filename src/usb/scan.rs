@@ -8,6 +8,7 @@ use nusb::{DeviceInfo, Error, MaybeFuture};
 
 struct EnclosureIterator(Box<dyn Iterator<Item = DeviceInfo>>);
 
+/// Enumerate USB-attached eGPU enclosures.
 pub fn list_enclosures() -> Result<impl Iterator<Item = Enclosure>, Error> {
     Ok(EnclosureIterator(Box::new(nusb::list_devices().wait()?)))
 }

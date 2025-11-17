@@ -3,16 +3,16 @@
 pub fn main() {
     #[cfg(feature = "usb")]
     {
-        println!("Enclosures:");
-        for enclosure in egpu::usb::list_enclosures().unwrap() {
+        println!("# eGPU Enclosures:");
+        for enclosure in egpu::list_enclosures().unwrap() {
             println!("- {:#?}", enclosure);
         }
     }
 
     #[cfg(feature = "pci")]
     {
-        println!("Devices:");
-        for device in egpu::pci::list_devices().unwrap() {
+        println!("# eGPU Devices:");
+        for device in egpu::list_devices().unwrap() {
             println!("- {:#?}", device);
         }
     }

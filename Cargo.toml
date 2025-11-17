@@ -6,14 +6,14 @@ version = "0.0.0"
 authors = ["Arto Bendiken"]
 edition = "2024"
 #rust-version = "1.85"
-description = "Libegpu is a work in progress"
+description = "Libegpu is a library for enumerating eGPU devices & enclosures"
 #documentation = ""
 readme = true
 homepage = "https://libegpu.dev"
 repository = "https://github.com/artob/libegpu"
 license = "Unlicense"
 keywords = ["egpu", "gpu", "pcie", "usb"]
-categories = ["hardware-support"]
+categories = ["command-line-utilities", "hardware-support", "os"]
 publish = true
 
 [features]
@@ -40,5 +40,5 @@ strip = true
 lto = "thin"
 
 [[bin]]
-name = "egpu"
+name = "lsegpu"
 path = "src/main.rs"

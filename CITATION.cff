@@ -15,7 +15,11 @@ authors:
 repository-code: https://github.com/artob/libegpu
 url: https://libegpu.dev
 abstract: >-
-  Libegpu is a work in progress.
+  Libegpu is a library for enumerating eGPU devices & enclosures.
 keywords:
   - libegpu
+  - egpu
+  - gpu
+  - pcie
+  - usb
 license: Unlicense

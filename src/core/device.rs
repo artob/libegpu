@@ -6,6 +6,7 @@ use super::Vendor;
 #[derive(Debug)]
 pub struct Device;
 
+/// PCIe-tunneled eGPU device.
 #[cfg(feature = "pci")]
 #[derive(Debug)]
 pub struct Device(pub pci_info::PciDevice);

@@ -7,6 +7,7 @@ use pci_info::{
 
 struct DeviceIterator(Box<dyn Iterator<Item = Result<PciDevice, PciDeviceEnumerationError>>>);
 
+/// Enumerate PCIe-tunneled (over USB4/Thunderbolt) eGPU devices.
 pub fn list_devices() -> Result<impl Iterator<Item = Device>, PciInfoError> {
     let info = PciInfo::enumerate_pci()?;
     Ok(DeviceIterator(Box::new(info.into_iter())))
