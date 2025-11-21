@@ -30,7 +30,7 @@ impl Iterator for DeviceIterator {
                             .find(|&vid| *vid == device.vendor_id())
                             .is_some()
                     {
-                        return Some(Device(device));
+                        return Some(Device::from(&device));
                     }
                 },
             }

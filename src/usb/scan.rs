@@ -26,7 +26,7 @@ impl Iterator for EnclosureIterator {
                     .iter()
                     .find(|&dev| dev.vid == device.vendor_id() && dev.pid == device.product_id())
             {
-                return Some(Enclosure(device));
+                return Some(Enclosure::from(&device));
             }
         }
         None

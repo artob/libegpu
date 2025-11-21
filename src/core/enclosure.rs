@@ -1,17 +1,27 @@
 // This is free and unencumbered software released into the public domain.
 
 use super::Vendor;
-
-#[cfg(not(feature = "usb"))]
-#[derive(Clone, Debug)]
-pub struct Enclosure;
+use derive_more::Display;
 
 /// USB-attached eGPU enclosure.
-#[cfg(feature = "usb")]
-#[derive(Clone, Debug)]
-pub struct Enclosure(pub nusb::DeviceInfo);
+#[derive(Clone, Debug, Display, Eq, Hash, Ord, PartialEq, PartialOrd)]
+#[display("{vendor_id}:{product_id}")]
+pub struct Enclosure {
+    pub(crate) vendor_id: u16,
+    pub(crate) product_id: u16,
+    //pub(crate) detail: nusb::DeviceInfo,
+}
 
-#[cfg(feature = "usb")]
+impl From<&nusb::DeviceInfo> for Enclosure {
+    fn from(device: &nusb::DeviceInfo) -> Self {
+        Enclosure {
+            vendor_id: device.vendor_id(),
+            product_id: device.product_id(),
+            //detail: Some(Box::new(device)),
+        }
+    }
+}
+
 impl Enclosure {
     pub fn vendor(&self) -> Vendor {
         match self.vendor_id() {
@@ -22,11 +32,11 @@ impl Enclosure {
 
     /// The vendor ID of the enclosure.
     pub fn vendor_id(&self) -> u16 {
-        self.0.vendor_id()
+        self.vendor_id
     }
 
     /// The product ID of the enclosure.
     pub fn product_id(&self) -> u16 {
-        self.0.product_id()
+        self.product_id
     }
 }

@@ -2,9 +2,13 @@
 
 /// Core types and traits.
 pub mod core {
+    #[cfg(feature = "pci")]
     mod device;
+    #[cfg(feature = "pci")]
     pub use device::*;
+    #[cfg(feature = "pci")]
     mod enclosure;
+    #[cfg(feature = "pci")]
     pub use enclosure::*;
     mod vendor;
     pub use vendor::*;
