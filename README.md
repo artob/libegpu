@@ -54,6 +54,18 @@ for enclosure in egpu::list_enclosures().unwrap() {
 
 [docs.rs/egpu](https://docs.rs/egpu/)
 
+### Supported Hardware
+
+#### eGPU Enclosures
+
+Vendor | Model | Year |
+:------ | :------ | ----: |
+Razer | Core X V2 | 2025 |
+Razer | Core X Chroma | 2019 |
+Razer | Core X | 2018 |
+Razer | Core V2 | 2017 |
+Razer | Core | 2016 |
+
 ## 👨‍💻 Development
 
 ```bash
