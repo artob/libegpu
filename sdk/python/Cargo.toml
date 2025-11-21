@@ -1,13 +1,20 @@
 # See: https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [package]
-name = "egpu"
+name = "egpu_py"
 version = "0.0.1"
 edition = "2024"
+
+[features]
+default = ["all", "std"]
+all = []
+std = ["derive_more/std"]
+
+[dependencies]
+derive_more = { version = "2", default-features = false, features = ["display"] }
+egpu = { path = "../.." }
+pyo3 = "0.27.0"
 
 [lib]
 name = "egpu"
 crate-type = ["cdylib"]
-
-[dependencies]
-pyo3 = "0.27.0"

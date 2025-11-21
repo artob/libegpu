@@ -5,7 +5,7 @@ use pci_info::{
     PciDevice, PciDeviceEnumerationError, PciInfo, PciInfoError, pci_enums::PciDeviceClass,
 };
 
-struct DeviceIterator(Box<dyn Iterator<Item = Result<PciDevice, PciDeviceEnumerationError>>>);
+pub struct DeviceIterator(Box<dyn Iterator<Item = Result<PciDevice, PciDeviceEnumerationError>>>); // FIXME
 
 /// Enumerate PCIe-tunneled (over USB4/Thunderbolt) eGPU devices.
 pub fn list_devices() -> Result<impl Iterator<Item = Device>, PciInfoError> {
