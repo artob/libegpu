@@ -11,6 +11,11 @@ pub fn main() {
 
     #[cfg(feature = "pci")]
     {
+        println!("# eGPU Controllers:");
+        for device in egpu::pci::list_controllers().unwrap() {
+            println!("- {:#?}", device);
+        }
+
         println!("# eGPU Devices:");
         for device in egpu::list_devices().unwrap() {
             println!("- {:#?}", device);
