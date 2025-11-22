@@ -6,6 +6,8 @@
 
 **Libegpu** is a library for enumerating external GPU (eGPU) devices & enclosures.
 
+<p align="center"><img src="https://github.com/artob/libegpu/raw/master/.img/workbench.jpeg" alt="NVIDIA GeForce RTX 5060 Ti attached to the ADT-Link ADT-UT3G dock" style="max-width: 100%;"></p>
+
 ## ✨ Features
 
 - Enumerates PCIe-tunneled eGPU devices from AMD, NVIDIA, and Intel
