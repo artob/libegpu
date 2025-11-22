@@ -17,16 +17,20 @@ pub mod core {
 /// PCIe device enumeration support.
 #[cfg(feature = "pci")]
 pub mod pci {
-    mod scan;
-    pub use scan::*;
+    mod controllers;
+    pub use controllers::*;
+    mod devices;
+    pub use devices::*;
+    mod iterator;
+    pub use iterator::*;
     pub mod registry;
 }
 
 /// USB enclosure enumeration support.
 #[cfg(feature = "usb")]
 pub mod usb {
-    mod scan;
-    pub use scan::*;
+    mod enclosures;
+    pub use enclosures::*;
     pub mod registry;
 }
 

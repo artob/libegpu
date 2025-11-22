@@ -24,7 +24,7 @@ impl Iterator for EnclosureIterator {
                 .is_some()
                 && let Some(_dev) = KNOWN_ENCLOSURES
                     .iter()
-                    .find(|&dev| dev.vid == device.vendor_id() && dev.pid == device.product_id())
+                    .find(|&dev| dev.0 == device.vendor_id() && dev.1 == device.product_id())
             {
                 return Some(Enclosure::from(&device));
             }
