@@ -1,0 +1,14 @@
+# Known eGPU chip/controller vendors.
+---
+- label: AMD/ATI
+  vid: 0x1002
+  link: https://devicehunt.com/view/type/pci/vendor/1002
+- label: NVIDIA
+  vid: 0x10DE
+  link: https://devicehunt.com/view/type/pci/vendor/10DE
+- label: ASMedia
+  vid: 0x1B21
+  link: https://devicehunt.com/view/type/pci/vendor/1B21
+- label: Intel
+  vid: 0x8086
+  link: https://devicehunt.com/view/type/pci/vendor/8086

@@ -1,0 +1,14 @@
+# Known eGPU engines on the PCIe bus.
+---
+- label: AMD Phoenix3 (2023)
+  vid: 0x1002
+  did: 0x1900
+  link: https://devicehunt.com/view/type/pci/vendor/1002/device/1900
+- label: NVIDIA GeForce RTX 4090 (2022)
+  vid: 0x10DE
+  did: 0x2684
+  link: https://devicehunt.com/view/type/pci/vendor/10DE/device/2684
+- label: NVIDIA GeForce RTX 5060 Ti (2025)
+  vid: 0x10DE
+  did: 0x2D04
+  link: https://devicehunt.com/view/type/pci/vendor/10DE/device/2D04

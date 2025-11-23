@@ -1,0 +1,18 @@
+# Known eGPU controllers on the PCIe bus.
+---
+- label: ASMedia ASM2464PD (2023) # used in ADT-Link ADT-UT3G
+  vid: 0x1B21
+  did: 0x2461
+  link: https://devicehunt.com/view/type/pci/vendor/1B21/device/2461
+- label: Intel JHL6540 (2016) # used in Razer Core X
+  vid: # TODO
+  did: # TODO
+  link: # TODO
+- label: Intel JHL7440 (2018)
+  vid: # TODO
+  did: # TODO
+  link: # TODO
+- label: Intel JHL9480 (2024) # used in Razer Core X V2
+  vid: # TODO
+  did: # TODO
+  link: # TODO

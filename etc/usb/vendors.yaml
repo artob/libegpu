@@ -1,0 +1,14 @@
+# Known eGPU enclosure vendors.
+---
+- label: Razer
+  vid: 0x1532
+  link: https://devicehunt.com/view/type/usb/vendor/1532
+- label: ASMedia
+  vid: 0x174C
+  link: https://devicehunt.com/view/type/usb/vendor/174C
+- label: Intel
+  vid: 0x8086
+  link: https://devicehunt.com/view/type/usb/vendor/8086
+- label: Intel
+  vid: 0x8087
+  link: https://devicehunt.com/view/type/usb/vendor/8087
