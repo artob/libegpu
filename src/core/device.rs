@@ -22,6 +22,7 @@ impl core::fmt::Debug for Device {
             .field("vendor", &self.vendor())
             .field("vendor_id", &self.vendor_id)
             .field("device_id", &self.device_id)
+            .field("removable", &self.is_removable())
             .finish()
     }
 }
@@ -67,5 +68,16 @@ impl Device {
     /// The device ID of the device.
     pub fn device_id(&self) -> u16 {
         self.device_id
+    }
+
+    pub fn is_removable(&self) -> Option<bool> {
+        #[cfg(feature = "std")]
+        if cfg!(target_os = "linux") {
+            return self
+                .path()
+                .as_ref()
+                .map(|path| std::fs::metadata(path).is_ok());
+        }
+        None // unknown
     }
 }
