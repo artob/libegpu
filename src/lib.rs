@@ -6,9 +6,9 @@ pub mod core {
     mod device;
     #[cfg(feature = "pci")]
     pub use device::*;
-    #[cfg(feature = "pci")]
+    #[cfg(feature = "usb")]
     mod enclosure;
-    #[cfg(feature = "pci")]
+    #[cfg(feature = "usb")]
     pub use enclosure::*;
     mod vendor;
     pub use vendor::*;
@@ -35,7 +35,7 @@ pub mod usb {
 }
 
 #[cfg(feature = "pci")]
-pub use pci::list_devices;
+pub use pci::{list_controllers, list_devices};
 
 #[cfg(feature = "usb")]
 pub use usb::list_enclosures;

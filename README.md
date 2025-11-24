@@ -38,13 +38,54 @@ cargo install egpu
 
 ### Enumerating eGPU Devices
 
+#### Python
+
+```python
+import egpu
+
+for device in egpu.devices():
+    print(device)
+```
+
+#### Rust
+
 ```rust
 for device in egpu::list_devices().unwrap() {
     println!("{:#?}", device);
 }
 ```
 
+### Enumerating eGPU Controllers
+
+#### Python
+
+```python
+import egpu
+
+for controller in egpu.controllers():
+    print(controller)
+```
+
+#### Rust
+
+```rust
+for controller in egpu::list_controllers().unwrap() {
+    println!("{:#?}", controller);
+}
+```
+
 ### Enumerating eGPU Enclosures
+
+#### Python
+
+```python
+import egpu
+
+for enclosure in egpu.enclosures():
+    print(enclosure)
+```
+
+#### Rust
 
 ```rust
 for enclosure in egpu::list_enclosures().unwrap() {
@@ -92,6 +133,15 @@ Intel | JHL9480 | 2024
 
 ```bash
 git clone https://github.com/artob/libegpu.git
+```
+
+### Developing the Python Bindings
+
+```console
+cd sdk/python
+maturin develop
+source .venv/bin/activate
+python3
 ```
 
 ---
