@@ -4,12 +4,23 @@ use super::Vendor;
 use derive_more::Display;
 
 /// USB-attached eGPU enclosure.
-#[derive(Clone, Debug, Display, Eq, Hash, Ord, PartialEq, PartialOrd)]
+#[derive(Clone, Display, Eq, Hash, Ord, PartialEq, PartialOrd)]
 #[display("{vendor_id}:{product_id}")]
+#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 pub struct Enclosure {
     pub(crate) vendor_id: u16,
     pub(crate) product_id: u16,
     //pub(crate) detail: nusb::DeviceInfo,
+}
+
+impl core::fmt::Debug for Enclosure {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("Enclosure")
+            .field("vendor", &self.vendor())
+            .field("vendor_id", &self.vendor_id)
+            .field("product_id", &self.product_id)
+            .finish()
+    }
 }
 
 impl From<&nusb::DeviceInfo> for Enclosure {

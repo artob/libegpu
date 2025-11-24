@@ -3,13 +3,24 @@
 use super::Vendor;
 use derive_more::Display;
 
-/// PCIe-tunngeled eGPU device.
-#[derive(Clone, Debug, Display, Eq, Hash, Ord, PartialEq, PartialOrd)]
+/// PCIe-tunneled eGPU device.
+#[derive(Clone, Display, Eq, Hash, Ord, PartialEq, PartialOrd)]
 #[display("{vendor_id}:{device_id}")]
+#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 pub struct Device {
     pub(crate) vendor_id: u16,
     pub(crate) device_id: u16,
     //pub(crate) detail: Option<Box<pci_info::PciDevice>>,
+}
+
+impl core::fmt::Debug for Device {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("Device")
+            .field("vendor", &self.vendor())
+            .field("vendor_id", &self.vendor_id)
+            .field("device_id", &self.device_id)
+            .finish()
+    }
 }
 
 impl From<&pci_info::PciDevice> for Device {

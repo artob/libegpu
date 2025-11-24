@@ -4,6 +4,7 @@ use derive_more::Display;
 
 /// eGPU enclosure and/or device vendor.
 #[derive(Clone, Copy, Debug, Display, Eq, Hash, Ord, PartialEq, PartialOrd)]
+#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 pub enum Vendor {
     #[display("AMD")]
     Amd,
