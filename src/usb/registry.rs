@@ -6,7 +6,7 @@ pub static KNOWN_VENDORS: [u16; 1] = [
 ];
 
 /// Known eGPU enclosures on the USB4/Thunderbolt bus.
-pub static KNOWN_ENCLOSURES: [UsbDevice; 5] = [
+pub static KNOWN_ENCLOSURES: [UsbDevice; 6] = [
     // Razer Core (2016)
     UsbDevice(0x1532, 0x0215),
     // Razer Core V2 (2017)
@@ -17,6 +17,8 @@ pub static KNOWN_ENCLOSURES: [UsbDevice; 5] = [
     UsbDevice(0x1532, 0x0F1A),
     // Razer Core X V2 (2025)
     UsbDevice(0x1532, 0x0F51),
+    // ASMedia ASM2464PD (2023
+    UsbDevice(0x174C, 0x2461),
 ];
 
 pub struct UsbDevice(pub u16, pub u16);

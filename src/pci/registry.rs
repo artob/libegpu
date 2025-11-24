@@ -18,10 +18,12 @@ pub static KNOWN_CONTROLLERS: [PciDevice; 1] = [
 ];
 
 /// Known eGPU devices on the PCIe bus.
-pub static KNOWN_DEVICES: [PciDevice; 2] = [
+pub static KNOWN_DEVICES: [PciDevice; 3] = [
     // AMD Phoenix3 (2023)
     PciDevice(0x1002, 0x1900),
-    // NVIDIA RTX 5060 Ti (2025)
+    // NVIDIA GeForce RTX 4090 (2022)
+    PciDevice(0x10DE, 0x2684),
+    // NVIDIA GeForce RTX 5060 Ti (2025)
     PciDevice(0x10DE, 0x2D04),
 ];
 

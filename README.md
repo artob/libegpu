@@ -13,7 +13,7 @@
 - Enumerates PCIe-tunneled eGPU devices from AMD, NVIDIA, and Intel
 - Enumerates USB-attached eGPU enclosures from Razer (e.g. the Razer Core X V2)
 - Includes an `lsegpu` CLI tool for enumerating eGPU devices & enclosures
-- Includes Python bindings to the Rust library (a work in progress)
+- Includes easy-to-use Python bindings to the Rust library (a work in progress)
 - 100% free and unencumbered public domain software
 
 ## 🛠️ Prerequisites
@@ -58,15 +58,35 @@ for enclosure in egpu::list_enclosures().unwrap() {
 
 ### Supported Hardware
 
+Some of the hardware specifically detected by this library include:
+
 #### eGPU Enclosures
 
-Vendor | Model | Year |
-:------ | :------ | ----: |
-Razer | Core X V2 | 2025 |
-Razer | Core X Chroma | 2019 |
-Razer | Core X | 2018 |
-Razer | Core V2 | 2017 |
-Razer | Core | 2016 |
+Vendor | Model | Year
+:----- | :---- | :---
+Razer | Core | 2016
+Razer | Core V2 | 2017
+Razer | Core X | 2018
+Razer | Core X Chroma | 2019
+Razer | Core X V2 | 2025
+
+#### eGPU Controllers
+
+Vendor | Model | Year
+:----- | :---- | :---
+ASMedia | ASM2464PD | 2023
+Intel | JHL6540 | 2016
+Intel | JHL7440 | 2018
+Intel | JHL9480 | 2024
+
+### Resources
+
+#### macOS
+
+- [Modernize PCI and SCSI drivers with DriverKit](https://developer.apple.com/videos/play/wwdc2020/10210/) (WWDC20)
+- [System Extensions and DriverKit](https://developer.apple.com/videos/play/wwdc2019/702/) (WWDC19)
+- [System Extensions and DriverKit](https://developer.apple.com/system-extensions/)
+- [PCIDriverKit Framework](https://developer.apple.com/documentation/pcidriverkit)
 
 ## 👨‍💻 Development
 
