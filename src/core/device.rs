@@ -8,6 +8,7 @@ use derive_more::Display;
 #[display("{vendor_id}:{device_id}")]
 #[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 pub struct Device {
+    pub(crate) path: Option<String>,
     pub(crate) vendor_id: u16,
     pub(crate) device_id: u16,
     //pub(crate) detail: Option<Box<pci_info::PciDevice>>,
@@ -16,6 +17,7 @@ pub struct Device {
 impl core::fmt::Debug for Device {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.debug_struct("Device")
+            .field("path", &self.path())
             .field("bus_type", &self.bus_type())
             .field("vendor", &self.vendor())
             .field("vendor_id", &self.vendor_id)
@@ -27,6 +29,19 @@ impl core::fmt::Debug for Device {
 impl From<&pci_info::PciDevice> for Device {
     fn from(device: &pci_info::PciDevice) -> Self {
         Device {
+            path: if let Ok(location) = device.location() {
+                if cfg!(target_os = "linux") {
+                    Some(format!(
+                        "/sys/devices/pci{}/{}",
+                        location.bus_number(),
+                        location
+                    ))
+                } else {
+                    None // TODO: support other platforms as well
+                }
+            } else {
+                None
+            },
             vendor_id: device.vendor_id(),
             device_id: device.device_id(),
             //detail: Some(Box::new(device)),
@@ -35,6 +50,10 @@ impl From<&pci_info::PciDevice> for Device {
 }
 
 impl Device {
+    pub fn path(&self) -> &Option<String> {
+        &self.path
+    }
+
     pub fn bus_type(&self) -> BusType {
         BusType::Pci
     }
