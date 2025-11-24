@@ -1,6 +1,6 @@
 // This is free and unencumbered software released into the public domain.
 
-use super::Vendor;
+use super::{BusType, Vendor};
 use derive_more::Display;
 
 /// USB-attached eGPU enclosure.
@@ -16,6 +16,7 @@ pub struct Enclosure {
 impl core::fmt::Debug for Enclosure {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.debug_struct("Enclosure")
+            .field("bus_type", &self.bus_type())
             .field("vendor", &self.vendor())
             .field("vendor_id", &self.vendor_id)
             .field("product_id", &self.product_id)
@@ -34,11 +35,12 @@ impl From<&nusb::DeviceInfo> for Enclosure {
 }
 
 impl Enclosure {
+    pub fn bus_type(&self) -> BusType {
+        BusType::Usb
+    }
+
     pub fn vendor(&self) -> Vendor {
-        match self.vendor_id() {
-            0x1532 => Vendor::Razer,
-            _ => Vendor::Other(self.vendor_id()),
-        }
+        Vendor::from_usb_vid(self.vendor_id())
     }
 
     /// The vendor ID of the enclosure.

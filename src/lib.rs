@@ -2,14 +2,19 @@
 
 /// Core types and traits.
 pub mod core {
+    mod bus;
+    pub use bus::*;
+
     #[cfg(feature = "pci")]
     mod device;
     #[cfg(feature = "pci")]
     pub use device::*;
+
     #[cfg(feature = "usb")]
     mod enclosure;
     #[cfg(feature = "usb")]
     pub use enclosure::*;
+
     mod vendor;
     pub use vendor::*;
 }

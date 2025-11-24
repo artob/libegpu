@@ -1,6 +1,6 @@
 // This is free and unencumbered software released into the public domain.
 
-use super::Vendor;
+use super::{BusType, Vendor};
 use derive_more::Display;
 
 /// PCIe-tunneled eGPU device.
@@ -16,6 +16,7 @@ pub struct Device {
 impl core::fmt::Debug for Device {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.debug_struct("Device")
+            .field("bus_type", &self.bus_type())
             .field("vendor", &self.vendor())
             .field("vendor_id", &self.vendor_id)
             .field("device_id", &self.device_id)
@@ -34,13 +35,12 @@ impl From<&pci_info::PciDevice> for Device {
 }
 
 impl Device {
+    pub fn bus_type(&self) -> BusType {
+        BusType::Pci
+    }
+
     pub fn vendor(&self) -> Vendor {
-        match self.vendor_id() {
-            0x1002 => Vendor::Amd,
-            0x10DE => Vendor::Nvidia,
-            0x8086 => Vendor::Intel,
-            _ => Vendor::Other(self.vendor_id()),
-        }
+        Vendor::from_pci_vid(self.vendor_id())
     }
 
     /// The vendor ID of the device.
