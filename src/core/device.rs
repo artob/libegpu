@@ -76,7 +76,7 @@ impl Device {
             return self
                 .path()
                 .as_ref()
-                .map(|path| std::fs::metadata(path).is_ok());
+                .map(|path| std::fs::metadata(format!("{}/removable", path)).is_ok());
         }
         None // unknown
     }
