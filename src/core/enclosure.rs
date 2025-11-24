@@ -32,7 +32,7 @@ impl From<&nusb::DeviceInfo> for Enclosure {
     fn from(device: &nusb::DeviceInfo) -> Self {
         Enclosure {
             #[cfg(target_os = "linux")]
-            path: Some(device.sysfs_path().display()),
+            path: Some(device.sysfs_path().display().to_string()),
             #[cfg(not(target_os = "linux"))]
             path: None,
             vendor_id: device.vendor_id(),

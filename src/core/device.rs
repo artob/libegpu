@@ -31,11 +31,8 @@ impl From<&pci_info::PciDevice> for Device {
         Device {
             path: if let Ok(location) = device.location() {
                 if cfg!(target_os = "linux") {
-                    Some(format!(
-                        "/sys/devices/pci{}/{}",
-                        location.bus_number(),
-                        location
-                    ))
+                    // See: https://docs.kernel.org/PCI/sysfs-pci.html
+                    Some(format!("/sys/bus/pci/devices/{}", location))
                 } else {
                     None // TODO: support other platforms as well
                 }
